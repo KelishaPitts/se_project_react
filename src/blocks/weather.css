@@ -1,0 +1,23 @@
+.weather {
+    position: relative;
+}
+
+.weather__temp {
+    position: absolute;
+    font-family: 'Cabinet Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    margin: 20px 16px;
+}
+
+.weather__bar {
+   
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
