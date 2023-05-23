@@ -1,22 +1,47 @@
-.header{
-    background-color: #F3F3F3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 60px;
-    padding: 0 20px;
-  }
-  
-  .header__logo{
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  
-  }
-  
-  .header__avatar-logo{
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  
-  }
+@font-face {
+  font-family: 'Grotesk', Arial;
+  src: url(../vendor/fonts/FamiljenGrotesk-Bold.ttf);
+}
+
+.header {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+  padding: 0 20px;
+  font-family: 'Grotesk';
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+
+}
+
+.header__logo {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+}
+
+.header__avatar-logo {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+}
+
+.header__addButton {
+  font-family: 'Grotesk';
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+}

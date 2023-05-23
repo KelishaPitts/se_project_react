@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Grotesk', Arial;
+    src: url(../vendor/fonts/FamiljenGrotesk-Bold.ttf);
+}
+
+.modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Grotesk';
+    font-style: normal;
+    font-weight: 700;
+   
+}
+
+.modal__button-close {
+    display: flex;
+    position: absolute;
+    background-image: url(../images/close.svg);
+    filter: contrast(0.5);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color:transparent;
+    width: 14px;
+    height: 14px;
+    border: 0;
+    margin: 27px 27px 0 457px;
+    border-radius: 0px;
+    transition: opacity 1s ease;
+    cursor: pointer;
+}
+
+.modal__container-item {
+    background-color: white;
+    max-width: 498px;
+    width: 100%;
+    border-radius: 20px;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.modal__container-form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 496px;
+    max-width: 100%;
+    border-radius: 20px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 20px;
+    
+
+}
+
+.modal__name {
+    margin: 0 32px;
+
+}
+
+.modal__weather {
+    margin: 12px 32px 32px 32px;
+
+}
+
+.modal__form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 28px 36px 28px;
+
+
+
+}
+
+.modal__button-submit {
+    font-family: 'Grotesk';
+    display: block;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0);
+    border-radius: 4px;
+    color: white;
+    width: 124px;
+    height: 36px;
+    margin: 0 0 36px 28px;
+    transition: opacity 1s ease;
+
+}
+
+.modal__button-submit:hover {
+    opacity: 0.6;
+
+}
+
+
+
+.modal__image {
+    border-radius: 20px 20px 0 0;
+    max-width: 498px;
+    padding-bottom: 20px;
+}

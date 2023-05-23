@@ -1,24 +1,53 @@
-.card__section{
+@font-face {
+    font-family: 'Grotesk', Arial;
+    src: url(../vendor/fonts/FamiljenGrotesk-Bold.ttf);
+}
+
+.card__section {
+    font-family: 'Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
     margin-top: 40px;
 }
 
-.card__items{    
+.card__container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+
+}
+
+.card__items {
     display: flex;
     flex-wrap: wrap;
     gap: 17px;
     justify-content: center;
     margin: 34px 0 0 0;
-    
+
 
 }
 
-.card__name{
-    text-align: center;
+.card__name {
+    display: flex;
+    position: absolute;
+    background: white;
+    margin-top: 18px;
+    padding: 2px 12px;
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 16px;
+    line-height: 20px;
+
 }
 
-.card__image{
+.card__image {
     width: 328px;
     height: 328px;
-    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 19px;
+    cursor: pointer;
+
 
 }

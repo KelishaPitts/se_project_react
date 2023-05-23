@@ -1,25 +1,36 @@
-import '../blocks/main.css'
-import Weather from './Weather.js';
-import ItemCard from './ItemCard.js';
+import "../blocks/main.css";
+import Weather from "./Weather.js";
+import ItemCard from "./ItemCard.js";
 import { defaultClothingItems } from "../utils/constants.js";
-const Main =({temp})=>{
+import { useMemo } from "react";
 
-return(
-<main className='main'>
+function Main({ weatherTemp, onSelectCard }) {
+  const weatherType = useMemo(() => {
+    if (weatherTemp >= 86) {
+      return "hot";
+    } else if (weatherTemp >= 66 && weatherTemp <= 85) {
+      return "warm";
+    } else if (weatherTemp <= 65) {
+      return "cold";
+    }
+  }, [weatherTemp]);
 
-    <Weather day={false} type='rain' temp={temp}/>
-    <section className="card__section" id="card-section">
-        Today is {temp}F / You may want to wear:
-      <div className='card__items'>
-        {defaultClothingItems.map((item) => (
-        <ItemCard item={item}/>
-      ))}
-      </div>
+  const filterCards = defaultClothingItems.filter((item) => {
+    return item.weather.toLowerCase() === weatherType;
+  });
 
-    
-    </section>
-      </main>)
+  return (
+    <main className="main">
+      <Weather day={false} type="rain" weatherTemp={weatherTemp} />
+      <section className="card__section" id="card-section">
+        Today is {weatherTemp}°F / You may want to wear:
+        <div className="card__items">
+          {filterCards.map((item) => (
+            <ItemCard item={item} onSelectCard={onSelectCard} />
+          ))}
+        </div>
+      </section>
+    </main>
+  );
 }
 export default Main;
-
-
