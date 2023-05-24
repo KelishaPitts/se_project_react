@@ -1,19 +1,17 @@
 @font-face {
-    font-family: 'Grotesk', 'Arial', sans-serif;
-    src: url(../vendor/fonts/FamiljenGrotesk-Medium.ttf);
-  }
-  
+  font-family: 'Grotesk', 'Arial', sans-serif;
+  src: url(../vendor/fonts/FamiljenGrotesk-Medium.ttf);
+}
+
 
 .footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 40px 24px 40px;
-    align-items: flex-end;
-    font-family: 'Grotesk', 'Arial', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-
-
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 40px 24px 40px;
+  align-items: flex-end;
+  font-family: 'Grotesk', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
 }

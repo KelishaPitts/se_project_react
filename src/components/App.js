@@ -1,4 +1,3 @@
-import "../blocks/app.css";
 import "../blocks/card.css";
 import "../blocks/page.css";
 import Footer from "./Footer.js";
@@ -8,6 +7,7 @@ import ModalWithForm from "./ModalWithForm.js";
 import { useEffect, useState } from "react";
 import ItemModal from "./ItemModal.js";
 import { getWeatherForcast, parseWeatherData } from "../utils/weatherApi.js";
+import { escKey } from "../utils/constants";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -27,10 +27,7 @@ function App() {
 
   useEffect(() => {
     const clickOffPopUp = (evt) => {
-      if (evt.target.classList.contains("modal")) {
-        handleCloseModal();
-      }
-      if (evt.target.classList.contains("modal__button-close")) {
+      if (evt.target.classList.contains("modal") || evt.target.classList.contains("modal__button-close")) {
         handleCloseModal();
       }
     };
@@ -42,8 +39,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const closeWithEsc = (e) => {
-      if (e.keyCode === 27) {
+    const closeWithEsc = (evt) => {
+      if (evt.keyCode === escKey) {
         handleCloseModal();
       }
     };
