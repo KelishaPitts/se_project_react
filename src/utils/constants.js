@@ -37,4 +37,47 @@ const defaultClothingItems = [
   },
 ];
 
-export { defaultClothingItems };
+const weatherOptions = [
+  {
+    url: require("../images/cloudy-day.svg").default,
+    day: true,
+    type: "cloudy",
+  },
+  {
+    url: require("../images/cloudy-night.svg").default,
+    day: false,
+    type: "cloudy",
+  },
+  { url: require("../images/fog-day.svg").default, day: true, type: "fog" },
+  { url: require("../images/fog-night.svg").default, day: false, type: "fog" },
+  { url: require("../images/rain-day.svg").default, day: true, type: "rain" },
+  {
+    url: require("../images/rain-night.svg").default,
+    day: false,
+    type: "rain",
+  },
+  { url: require("../images/snow-day.svg").default, day: true, type: "snow" },
+  {
+    url: require("../images/snow-night.svg").default,
+    day: false,
+    type: "snow",
+  },
+  { url: require("../images/storm-day.svg").default, day: true, type: "storm" },
+  {
+    url: require("../images/storm-night.svg").default,
+    day: false,
+    type: "storm",
+  },
+  { url: require("../images/sunny-day.svg").default, day: true, type: "sunny" },
+  {
+    url: require("../images/sunny-night.svg").default,
+    day: false,
+    type: "sunny",
+  },
+];
+
+const latitude = 33.75;
+const longitude = -84.38;
+const APIkey = "2cb050aff33df5169e3f6dea7abde038";
+
+export { defaultClothingItems, latitude, longitude, APIkey, weatherOptions };

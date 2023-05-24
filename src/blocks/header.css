@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Grotesk', Arial;
+  font-family: 'Grotesk', 'Arial', sans-serif;
   src: url(../vendor/fonts/FamiljenGrotesk-Bold.ttf);
 }
 
@@ -10,7 +10,7 @@
   align-items: center;
   min-height: 60px;
   padding: 0 20px;
-  font-family: 'Grotesk';
+  font-family: 'Grotesk', 'Arial', sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
@@ -34,7 +34,7 @@
 }
 
 .header__addButton {
-  font-family: 'Grotesk';
+  font-family: 'Grotesk', 'Arial', sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
@@ -43,5 +43,11 @@
   border: none;
   background: none;
   cursor: pointer;
+  transition: opacity 1s ease;
+
+}
+
+.header__addButton:hover {
+  opacity: 0.6;
 
 }

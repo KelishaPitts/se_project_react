@@ -1,15 +1,15 @@
 @font-face {
-    font-family: 'Grotesk', Arial;
+    font-family: 'Grotesk', 'Arial', sans-serif;
     src: url(../vendor/fonts/FamiljenGrotesk-Bold.ttf);
 }
 
 
-.form{
-    padding: 28px 36px 28px;   
+.form {
+    padding: 28px 36px 28px;
 }
 
-.form__input{
-    font-family: 'Grotesk';
+.form__input {
+    font-family: 'Grotesk', 'Arial', sans-serif;
     font-size: 16px;
     line-height: 20px;
     display: block;
@@ -21,16 +21,36 @@
     background: transparent;
     border-bottom: 1px solid rgba(0, 0, 0);
     padding: 0 0 13px 0;
-    margin: 8px 0 24px 0 ;
+    margin: 8px 0 24px 0;
 
 }
 
-.form__label{
+.form__input-radio:checked {
+    accent-color: black;
+}
+
+.form__input-radio:checked+.form__label-radio {
+    color: black;
+
+
+}
+
+.form__label-radio {
+    color: #00000080;
+
+}
+
+.form__input-radio {
+    background: #00000080;
+    cursor: pointer;
+}
+
+.form__label {
     padding-bottom: 10px;
 }
 
 
-.form__title{
+.form__title {
     font-size: 16px;
     margin: 28px 0 24px 28px;
 

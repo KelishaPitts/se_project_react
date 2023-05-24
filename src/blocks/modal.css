@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Grotesk', Arial;
+    font-family:'Grotesk', 'Arial', sans-serif;
     src: url(../vendor/fonts/FamiljenGrotesk-Bold.ttf);
 }
 
@@ -13,7 +13,7 @@
     right: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    font-family: 'Grotesk';
+    font-family:'Grotesk', 'Arial', sans-serif;
     font-style: normal;
     font-weight: 700;
    
@@ -35,6 +35,11 @@
     transition: opacity 1s ease;
     cursor: pointer;
 }
+
+.modal__button-close:hover{
+    opacity: 0.6;
+}
+
 
 .modal__container-item {
     background-color: white;
@@ -81,19 +86,22 @@
 }
 
 .modal__button-submit {
-    font-family: 'Grotesk';
+    font-family:'Grotesk', 'Arial', sans-serif;
     display: block;
     font-style: normal;
     font-weight: 700;
     line-height: 20px;
     padding: 8px 16px;
+    border: none;
     background: rgba(0, 0, 0);
     border-radius: 4px;
     color: white;
     width: 124px;
     height: 36px;
     margin: 0 0 36px 28px;
+    cursor: pointer;
     transition: opacity 1s ease;
+
 
 }
 

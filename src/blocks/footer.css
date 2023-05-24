@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Grotesk', Arial;
+    font-family: 'Grotesk', 'Arial', sans-serif;
     src: url(../vendor/fonts/FamiljenGrotesk-Medium.ttf);
   }
   
@@ -9,7 +9,7 @@
     justify-content: space-between;
     padding: 0 40px 24px 40px;
     align-items: flex-end;
-    font-family: 'Grotesk';
+    font-family: 'Grotesk', 'Arial', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;

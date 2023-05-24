@@ -26,14 +26,43 @@ function App() {
   };
 
   useEffect(() => {
-    getWeatherForcast().then((data) => {
-      const temperature = parseWeatherData(data)[0];
-      const city = parseWeatherData(data)[1];
-      setCity(city);
-      setTemp(temperature);
-    });
+    const clickOffPopUp = (evt) => {
+      if (evt.target.classList.contains("modal")) {
+        handleCloseModal();
+      }
+      if (evt.target.classList.contains("modal__button-close")) {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("click", clickOffPopUp);
+    return () => {
+      document.removeEventListener("click", clickOffPopUp);
+    };
   }, []);
-  console.log(temp);
+
+  useEffect(() => {
+    const closeWithEsc = (e) => {
+      if (e.keyCode === 27) {
+        handleCloseModal();
+      }
+    };
+    window.addEventListener("keydown", closeWithEsc);
+    return () => window.removeEventListener("keydown", closeWithEsc);
+  }, []);
+
+  useEffect(() => {
+    getWeatherForcast()
+      .then((data) => {
+        const temperature = parseWeatherData(data)[0];
+        const city = parseWeatherData(data)[1];
+        setCity(city);
+        setTemp(temperature);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="page">
@@ -41,7 +70,11 @@ function App() {
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm title="New Garment" onClose={handleCloseModal}>
+        <ModalWithForm
+          title="New Garment"
+          buttonText="Add garment"
+          onClose={handleCloseModal}
+        >
           <div>
             <label className="form__label">
               Name
@@ -76,8 +109,9 @@ function App() {
                 type="radio"
                 id="hot"
                 value="hot"
+                name="weather-type"
               />
-              <label>Hot</label>
+              <label className="form__label-radio">Hot</label>
             </div>
             <div>
               <input
@@ -85,8 +119,9 @@ function App() {
                 type="radio"
                 id="warm"
                 value="warm"
+                name="weather-type"
               />
-              <label>Warm</label>
+              <label className="form__label-radio">Warm</label>
             </div>
             <div>
               <input
@@ -94,8 +129,9 @@ function App() {
                 type="radio"
                 id="cold"
                 value="cold"
+                name="weather-type"
               />
-              <label>Cold</label>
+              <label className="form__label-radio">Cold</label>
             </div>
           </div>
         </ModalWithForm>
