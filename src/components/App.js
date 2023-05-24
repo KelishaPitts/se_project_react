@@ -1,3 +1,4 @@
+import "../blocks/app.css"
 import "../blocks/card.css";
 import "../blocks/page.css";
 import Footer from "./Footer.js";
