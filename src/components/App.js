@@ -9,12 +9,15 @@ import { useEffect, useState } from "react";
 import ItemModal from "./ItemModal.js";
 import { getWeatherForcast, parseWeatherData } from "../utils/weatherApi.js";
 import { escKey } from "../utils/constants";
+import  CurrentTemperatureUnitContext  from "../contexts/CurrentTemperatureUnitContext";
 
 function App() {
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [city, setCity] = useState("");
+  const[overCast, setOverCast] = useState("Clouds");
   const setModalToCreate = () => {
     setActiveModal("create");
   };
@@ -25,6 +28,12 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
+
+  const handleToggleSwitchChange = () => {
+    currentTemperatureUnit === 'F'
+      ? setCurrentTemperatureUnit('C')
+      : setCurrentTemperatureUnit('F');
+  }; 
 
   useEffect(() => {
     const clickOffPopUp = (evt) => {
@@ -53,19 +62,37 @@ function App() {
     getWeatherForcast()
       .then((data) => {
         const temperature = parseWeatherData(data)[0];
-        const city = parseWeatherData(data)[1];
+        const temperatureF = parseWeatherData(data)[1];
+        const temperatureC =parseWeatherData(data)[2];
+        const city = parseWeatherData(data)[3];
+        const overCast = parseWeatherData(data)[4];
         setCity(city);
-        setTemp(temperature);
+        setOverCast(overCast);
+        console.log(city)
+        setTemp([temperature, temperatureF, temperatureC]);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
+  const getWeatherConvert = ()=> {
+    if (currentTemperatureUnit === 'F'){
+      return temp[1];
+    } else if (currentTemperatureUnit === 'C'){
+      return temp[2]
+    }
+  }
+
+  
+
   return (
     <div className="page">
-      <Header onCreateModal={setModalToCreate} city={city} />
-      <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+      <CurrentTemperatureUnitContext.Provider
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+      <Header onCreateModal={setModalToCreate} city={city}  />
+      <Main weatherTemp={getWeatherConvert()} onSelectCard={handleSelectedCard} overCast={overCast}/>
       <Footer />
       {activeModal === "create" && (
         <ModalWithForm
@@ -137,6 +164,7 @@ function App() {
       {activeModal === "preview" && (
         <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
       )}
+      </CurrentTemperatureUnitContext.Provider>
     </div>
   );
 }

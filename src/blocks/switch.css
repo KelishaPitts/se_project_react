@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Grotesk', 'Arial', sans-serif;
+    src: url(../vendor/fonts/FamiljenGrotesk-Bold.ttf);
+  }
+
+  .switch__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .switch__button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .switch__inner-containter{
+    font-family: 'Grotesk', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    margin-right: 4px;
+    z-index: 1;
+    left: 34px;
+
+    position: relative;
+
+
+  }
+
+  .switch__inner-F{
+    z-index: 1;
+    color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    right: 13px;
+    margin-right: 10px;
+
+
+
+  }
+
+  .switch__inner-C{
+    z-index: 1;
+    color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    right:10px;
+
+    
+  }
+ 
+  .switch__checkbox {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+  
+  .switch__label {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+    cursor: pointer;
+    width: 56px;
+    height: 28px;
+    background: white;
+    border-radius: 100px;
+    border: #7E7E7E 2px solid;
+  }
+  
+  .switch__label .switch__button {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+    transition: .5s;
+    z-index: 3;
+    background: black;
+    color: white;
+    box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+  }
+  
+  .switch__checkbox:checked + .switch__label .switch__button {
+    transform: translateX(28px);
+  }
+  
+  .switch__label:active .switch__button {
+    width: -56px;
+  }

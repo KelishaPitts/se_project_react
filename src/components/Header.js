@@ -1,10 +1,25 @@
 import "../blocks/header.css";
+import React, {useState, useEffect} from 'react';
+import ToggleSwitch from "./ToggleSwitch";
+
 
 const Header = ({ onCreateModal, city }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  const[currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
+ const [isChecked, setIsChecked] = useState(currentTemperatureUnit === 'C');
+ const handleClick = () => setIsChecked(!isChecked)
+  //useEffect(() => setIsChecked(currentTemperatureUnit)==='C', [currentTemperatureUnit]);
+ 
+
+ const handleToggleSwitchChange = () => {
+  currentTemperatureUnit === 'F'
+    ? setCurrentTemperatureUnit('C')
+    : setCurrentTemperatureUnit('F');
+}; 
 
   return (
     <header className="header">
@@ -15,8 +30,16 @@ const Header = ({ onCreateModal, city }) => {
         <div>
           {currentDate}, {city}
         </div>
+       
       </div>
       <div className="header__avatar-logo">
+      <ToggleSwitch id="toggleSwitch" 
+      checked={isChecked}
+  
+       handleToggle={handleToggleSwitchChange}
+       onChange= {handleToggleSwitchChange}
+       value = {currentTemperatureUnit}
+      />
         <div>
           <button
             className="header__addButton"

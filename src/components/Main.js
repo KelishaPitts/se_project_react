@@ -1,19 +1,27 @@
 import "../blocks/main.css";
 import Weather from "./Weather.js";
 import ItemCard from "./ItemCard.js";
+import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import { defaultClothingItems } from "../utils/constants.js";
+import { useContext } from "react";
 
-function Main({ weatherTemp, onSelectCard }) {
+
+
+
+
+function Main({ weatherTemp, onSelectCard, overCast}) {
+  console.log(overCast)
+  const {currentTemperatureUnit} = useContext(CurrentTemperatureUnitContext);
   const getWeatherType = () => {
-    if (weatherTemp >= 86) {
+    const weatherValue = parseInt(weatherTemp)
+    if ((weatherValue >= 86 && currentTemperatureUnit === 'F')||(weatherValue >= 30 && currentTemperatureUnit === 'C') ) {
       return "hot";
-    } else if (weatherTemp >= 66 && weatherTemp <= 85) {
+    } else if ((weatherValue >= 66 && weatherValue <= 85  && currentTemperatureUnit === 'F') ||(weatherValue >= 19 && weatherValue <= 29  && currentTemperatureUnit === 'C')) {
       return "warm";
-    } else if (weatherTemp <= 65) {
+    } else if ((weatherValue <= 65 && currentTemperatureUnit === 'F') || (weatherValue <= 28 && currentTemperatureUnit === 'C' )) {
       return "cold";
     }
   };
-
   const weatherType = getWeatherType();
 
   const filterCards = defaultClothingItems.filter((item) => {
@@ -22,9 +30,10 @@ function Main({ weatherTemp, onSelectCard }) {
 
   return (
     <main className="main">
-      <Weather day={false} type="rain" weatherTemp={weatherTemp} />
+      
+      <Weather day={false}  type={overCast} weatherTemp={weatherTemp} value={currentTemperatureUnit} />
       <section className="card__section" id="card-section">
-        Today is {weatherTemp}°F / You may want to wear:
+        Today is {weatherTemp} / You may want to wear:
         <div className="card__items">
           {filterCards.map((item) => (
             <ItemCard key={item._id} item={item} onSelectCard={onSelectCard} />
