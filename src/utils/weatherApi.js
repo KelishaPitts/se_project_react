@@ -21,9 +21,6 @@ export const parseWeatherData = (data) => {
   const temperatureF = `${Math.round(temperature)}°F`;
   const temperatureC = `${Math.round((temperature - 32) * 5/9)}°C`;
   const weatherSky = data.weather[0].main
-  console.log(weatherSky)
-
-
   const cityName = data.name;
   return [ temperature, temperatureF,  temperatureC, cityName, weatherSky];
 };

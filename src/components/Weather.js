@@ -2,16 +2,16 @@ import "../blocks/weather.css";
 import { weatherOptions } from "../utils/constants";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 
-const Weather = ({ day, type, weatherTemp}) => {
+const Weather = ({ day, type, weatherTemp }) => {
   const currentHour = new Date().getHours();
-  const isDay =()=>{
-  if (currentHour > 17){
-      return  true;
-  }else{
-    return false
-  }
-}
- 
+  const isDay = () => {
+    if (currentHour < 17 && currentHour > 5) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const imageSrc = weatherOptions.find((item) => {
     return item.day === isDay() && item.type === type;
   });
