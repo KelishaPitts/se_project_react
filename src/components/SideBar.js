@@ -1,9 +1,13 @@
+import "../blocks/sideBar.css";
+import {NavLink} from 'react-router-dom';
 const SideBar = () => {
   return (
     <div className="sideBar">
       <div className="header__avatar-logo">
+      <NavLink  to="/">
           <img src={require("../images/avatar.svg").default} alt="avatar" />
-          <div>Name</div>
+          </NavLink>
+          <div className="sideBar__name">Name</div>
       </div>
     </div>
   );

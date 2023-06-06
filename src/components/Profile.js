@@ -1,22 +1,33 @@
 import ClothesSection from "./ClothesSection";
 import SideBar from "./SideBar";
-import "../blocks/profile.css"
+import "../blocks/profile.css";
 
-
-
-const Profile = () => {
+debugger;
+const Profile = (
+  clothingItems,
+  onSelectCard,
+  onCardDelete,
+  onCreateModal,
+  onAddItem
+) => {
   return (
-
-    <div className="profile"> 
+    <div className="profile">
       <SideBar />
       <div className="profile__container">
         <div className="profile__header">
-      <div>Your Items</div>
-      <button>+Add new</button>
+          <div>Your Items</div>
+          <button onClick={onCreateModal} className="profile__button-add">
+            +Add new
+          </button>
+        </div>
+        <ClothesSection
+          clothingItems={clothingItems}
+          onSelectCard={onSelectCard}
+          onCardDelete={onCardDelete}
+          onAddItem={onAddItem}
+          onCreateModal={onCreateModal}
+        />
       </div>
-      <ClothesSection />
-      </div>
-      
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import "../blocks/weather.css";
 import { weatherOptions } from "../utils/constants";
-import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 
-const Weather = ({ day, type, weatherTemp }) => {
+
+const Weather = ({type, weatherTemp }) => {
   const currentHour = new Date().getHours();
   const isDay = () => {
     if (currentHour < 17 && currentHour > 5) {

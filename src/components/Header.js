@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from 'react-router-dom';
 
+
+debugger
 const Header = ({ onCreateModal, city }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",

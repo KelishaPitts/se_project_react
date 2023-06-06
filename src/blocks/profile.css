@@ -1,7 +1,11 @@
+@font-face {
+    font-family: 'Grotesk', 'Arial', sans-serif;
+    src: url(../vendor/fonts/FamiljenGrotesk-Bold.ttf);
+  }
 .profile{
     display: flex;
     flex-direction: row;
-    margin: 0 0 0 40px ;
+    margin: 68px 0 0 40px ;
 
 
 }
@@ -9,10 +13,34 @@
 .profile__header{
     display: flex;
     flex-direction: row;
-    
+    font-family: 'Grotesk', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
 
 }
 
 .profile__container{
     margin: 0 0 0 112px;
 }
+
+.profile__button-add{
+    font-family: 'Grotesk', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.6);
+    transition: opacity 1s ease;
+  
+  }
+  
+  .profile__button-add:hover {
+    opacity: 0.6;
+  
+  }

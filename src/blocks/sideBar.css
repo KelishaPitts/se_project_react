@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Grotesk', 'Arial', sans-serif;
+    src: url(../vendor/fonts/FamiljenGrotesk-Bold.ttf);
+}
+
+.sideBar__name {
+    font-family: 'Grotesk', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+
+
+}

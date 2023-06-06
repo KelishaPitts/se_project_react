@@ -1,5 +1,5 @@
 @font-face {
-    font-family:'Grotesk', 'Arial', sans-serif;
+    font-family: 'Grotesk', 'Arial', sans-serif;
     src: url(../vendor/fonts/FamiljenGrotesk-Bold.ttf);
 }
 
@@ -13,11 +13,11 @@
     right: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    font-family:'Grotesk', 'Arial', sans-serif;
+    font-family: 'Grotesk', 'Arial', sans-serif;
     font-style: normal;
     font-weight: 700;
     z-index: 3;
-   
+
 }
 
 .modal__button-close {
@@ -27,7 +27,7 @@
     filter: contrast(0.5);
     background-position: center;
     background-repeat: no-repeat;
-    background-color:transparent;
+    background-color: transparent;
     width: 14px;
     height: 14px;
     border: 0;
@@ -37,10 +37,35 @@
     cursor: pointer;
 }
 
-.modal__button-close:hover{
+.modal__button-close:hover {
     opacity: 0.6;
 }
 
+.modal__button-delete {
+    display: flex;
+    font-family: 'Cabinet Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FF4D00;
+    margin: 0 32px 0 0 ;
+    border: none;
+    padding: 0;
+    background:none;
+    cursor: pointer;
+    transition: opacity 1s ease;
+
+}
+.modal__description{
+    display: flex;
+    justify-content: space-between
+}
+
+.modal__button-delete:hover {
+    opacity: 0.6;
+
+}
 
 .modal__container-item {
     background-color: white;
@@ -63,7 +88,7 @@
     box-sizing: border-box;
     font-size: 16px;
     line-height: 20px;
-    
+
 
 }
 
@@ -87,7 +112,7 @@
 }
 
 .modal__button-submit {
-    font-family:'Grotesk', 'Arial', sans-serif;
+    font-family: 'Grotesk', 'Arial', sans-serif;
     display: block;
     font-style: normal;
     font-weight: 700;
