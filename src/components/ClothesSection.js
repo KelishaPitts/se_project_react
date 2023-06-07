@@ -1,16 +1,13 @@
 import ItemCard from "./ItemCard.js";
 import "../blocks/clothesSection.css";
-import { defaultClothingItems } from "../utils/constants.js";
 
-const ClothesSection = (
+const ClothesSection = ({
   onSelectCard,
   onCardDelete,
   clothingItems,
   onAddItem,
-  onCreateModal
+  onCreateModal}
 ) => {
-  console.log(clothingItems);
-  console.log(clothingItems);
   return (
     <div className="clothesSection">
       <div className="clothesSection__items">

@@ -37,9 +37,6 @@ const defaultClothingItems = [
   },
 ];
 
-
-
-
 const weatherOptions = [
   {
     url: require("../images/cloudy-day.svg").default,
@@ -65,7 +62,11 @@ const weatherOptions = [
     day: false,
     type: "Snow",
   },
-  { url: require("../images/storm-day.svg").default, day: true, type: "Thunderstorm" },
+  {
+    url: require("../images/storm-day.svg").default,
+    day: true,
+    type: "Thunderstorm",
+  },
   {
     url: require("../images/storm-night.svg").default,
     day: false,
@@ -84,4 +85,11 @@ const longitude = -84.38;
 const APIkey = "2cb050aff33df5169e3f6dea7abde038";
 const escKey = 27;
 
-export { defaultClothingItems, latitude, longitude, APIkey, weatherOptions,escKey };
+export {
+  defaultClothingItems,
+  latitude,
+  longitude,
+  APIkey,
+  weatherOptions,
+  escKey,
+};

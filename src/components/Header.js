@@ -1,10 +1,8 @@
 import "../blocks/header.css";
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import ToggleSwitch from "./ToggleSwitch";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
-
-debugger
 const Header = ({ onCreateModal, city }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -12,7 +10,6 @@ const Header = ({ onCreateModal, city }) => {
   });
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
@@ -24,8 +21,8 @@ const Header = ({ onCreateModal, city }) => {
     <header className="header">
       <div className="header__logo">
         <div>
-        <NavLink  to="/">
-          <img src={require("../images/logo.svg").default} alt="logo" />
+          <NavLink to="/">
+            <img src={require("../images/logo.svg").default} alt="logo" />
           </NavLink>
         </div>
         <div>
@@ -35,7 +32,6 @@ const Header = ({ onCreateModal, city }) => {
       <div className="header__avatar-logo">
         <ToggleSwitch
           id="toggleSwitch"
-         
           handleToggle={handleToggleSwitchChange}
           onChange={handleToggleSwitchChange}
           value={currentTemperatureUnit}
@@ -44,7 +40,7 @@ const Header = ({ onCreateModal, city }) => {
           <button
             className="header__addButton"
             type="text"
-            onClick={onCreateModal}
+            onClick={() => onCreateModal()}
           >
             {" "}
             + Add Clothes
@@ -52,8 +48,8 @@ const Header = ({ onCreateModal, city }) => {
         </div>
         <div>Name</div>
         <div>
-        <NavLink to="/profile">
-          <img src={require("../images/avatar.svg").default} alt="avatar" />
+          <NavLink to="/profile">
+            <img src={require("../images/avatar.svg").default} alt="avatar" />
           </NavLink>
         </div>
       </div>

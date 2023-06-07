@@ -1,5 +1,4 @@
 const baseUrl = 'http://localhost:3001'; 
-//https://my-json-server.typicode.com/kelishapitts/se_project_react 
 
 function handleResponse(res) {
     if (res.ok) {
@@ -18,8 +17,9 @@ export const getItemList = () =>{
 }
 
 export const addItem = ({name, weather, imageUrl}) =>{
-    const item ={name, weather, imageUrl}
+    
     return fetch(`${baseUrl}/items`,{
+        method: "POST",
         headers:{
             "Content-Type":"application/json"
         },
@@ -33,6 +33,7 @@ export const addItem = ({name, weather, imageUrl}) =>{
 
 export const deleteItem = (id) =>{
     return fetch(`${baseUrl}/items/${id}`,{
+        method:"DELETE",
         headers:{
             "Content-Type":"application/json"
         }

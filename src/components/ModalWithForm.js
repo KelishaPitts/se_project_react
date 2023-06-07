@@ -1,7 +1,7 @@
 import "../blocks/modal.css";
 import "../blocks/form.css";
 
-const ModalWithForm = ({ children, buttonText, title, onClose, isOpen, name, onSubmit }) => {
+const ModalWithForm = ({ children, buttonText, title, onClose, name, onSubmit }) => {
   return (
     <div className={`modal modal_type_${name}`}>
       <div className="modal__container-form">
@@ -11,10 +11,11 @@ const ModalWithForm = ({ children, buttonText, title, onClose, isOpen, name, onS
           onClick={onClose}
         />
         <h3 className="form__title">{title}</h3>
-        <form onSubmit={onSubmit} className="modal__form">{children}</form>
+        <form onSubmit={onSubmit} className="modal__form">{children}
         <button className="modal__button-submit" type="submit">
           {buttonText}
         </button>
+        </form>
       </div>
     </div>
   );

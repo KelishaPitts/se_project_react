@@ -6,7 +6,7 @@ const handleResponse = (res) => {
   }
   // if the server returns an error, reject the promise
   return Promise.reject(`Error: ${res.status}`);
-}
+};
 
 export const getWeatherForcast = () => {
   const weatherApi = fetch(
@@ -17,10 +17,10 @@ export const getWeatherForcast = () => {
 
 export const parseWeatherData = (data) => {
   const main = data.main;
-  const temperature = Math.ceil( main && main.temp);
+  const temperature = Math.ceil(main && main.temp);
   const temperatureF = `${Math.round(temperature)}°F`;
-  const temperatureC = `${Math.round((temperature - 32) * 5/9)}°C`;
-  const weatherSky = data.weather[0].main
+  const temperatureC = `${Math.round(((temperature - 32) * 5) / 9)}°C`;
+  const weatherSky = data.weather[0].main;
   const cityName = data.name;
-  return [ temperature, temperatureF,  temperatureC, cityName, weatherSky];
+  return [temperature, temperatureF, temperatureC, cityName, weatherSky];
 };

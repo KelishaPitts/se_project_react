@@ -1,5 +1,5 @@
 import "../blocks/main.css";
-import Weather from "./Weather.js";
+import Weather from "./WeatherCard.js";
 import ItemCard from "./ItemCard.js";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import { useContext } from "react";
@@ -11,7 +11,6 @@ function Main({
   clothingItems,
   onCardDelete,
 }) {
-  console.log(overCast);
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const getWeatherType = () => {
     const weatherValue = parseInt(weatherTemp);

@@ -2,13 +2,12 @@ import ClothesSection from "./ClothesSection";
 import SideBar from "./SideBar";
 import "../blocks/profile.css";
 
-debugger;
-const Profile = (
+const Profile = ({
   clothingItems,
   onSelectCard,
   onCardDelete,
   onCreateModal,
-  onAddItem
+  onAddItem}
 ) => {
   return (
     <div className="profile">
@@ -16,7 +15,7 @@ const Profile = (
       <div className="profile__container">
         <div className="profile__header">
           <div>Your Items</div>
-          <button onClick={onCreateModal} className="profile__button-add">
+          <button  onClick={()=>onCreateModal()} className="profile__button-add">
             +Add new
           </button>
         </div>

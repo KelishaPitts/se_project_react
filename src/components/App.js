@@ -14,7 +14,6 @@ import { Switch, Route } from "react-router-dom";
 import Profile from "./Profile.js";
 import { getItemList, addItem, deleteItem } from "../utils/api";
 
-
 function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [activeModal, setActiveModal] = useState("");
@@ -32,35 +31,30 @@ function App() {
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
-    console.log(card)
   };
 
+  const handleAddItemSubmit = (item) => {
+    addItem(item)
+      .then((item) => {
+        setClothingItems([item, ...clothingItems]);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  const handleAddItemSubmit=(e)=>{
-    console.log(e)
-    /*
-    addItem({name, url, weather}).then((item)=> {
-    setClothingItems([item, ...clothingItems]); 
-    handleCloseModal();
-    }).catch((err) => {
-      console.log(err);
-      
-  })
-  */
-}
-
-  const handleDeleteCard =(card) =>{
-    console.log(card)
-    console.log(card.id)
-    deleteItem(card.id).then(()=>{
-    const newCardList = clothingItems.filter((item) => item.id !== card.id);
-    setClothingItems(newCardList);
-    handleCloseModal();
-  }).catch((err) => {
-    console.log(err);
-
-  })
-}
+  const handleDeleteCard = (card) => {
+    deleteItem(card.id)
+      .then(() => {
+        const newCardList = clothingItems.filter((item) => item.id !== card.id);
+        setClothingItems(newCardList);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
@@ -68,13 +62,15 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  useEffect(()=>{
-    getItemList().then((items)=>{
-      setClothingItems(items);
-
-    }) .catch((err) => {
-      console.log(err);
-  });},[])
+  useEffect(() => {
+    getItemList()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   useEffect(() => {
     const clickOffPopUp = (evt) => {
@@ -112,7 +108,6 @@ function App() {
         const overCast = parseWeatherData(data)[4];
         setCity(city);
         setOverCast(overCast);
-        console.log(city);
         setTemp([temperature, temperatureF, temperatureC]);
       })
       .catch((err) => {
@@ -136,38 +131,42 @@ function App() {
         <Header onCreateModal={setModalToCreate} city={city} />
 
         <Switch>
-          <Route exact path= "/" >
-        <Main
-          weatherTemp={getWeatherConvert()}
-          onSelectCard={handleSelectedCard}
-          overCast={overCast}
-          onCardDelete= {handleDeleteCard}
-          clothingItems={clothingItems}
-         />
-         </Route>
-          
-        
-        <Route path="/profile" >
-        <Profile
-         onSelectCard={handleSelectedCard}
-         onCardDelete= {handleDeleteCard}
-         clothingItems={clothingItems}
-         onAddItem={handleAddItemSubmit}
-         onCreateModal={setModalToCreate}
-        />
-        </Route>
-         </Switch> 
-         
+          <Route exact path="/">
+            <Main
+              weatherTemp={getWeatherConvert()}
+              onSelectCard={handleSelectedCard}
+              overCast={overCast}
+              onCardDelete={handleDeleteCard}
+              clothingItems={clothingItems}
+            />
+          </Route>
+
+          <Route path="/profile">
+            <Profile
+              onSelectCard={handleSelectedCard}
+              onCardDelete={handleDeleteCard}
+              clothingItems={clothingItems}
+              onAddItem={handleAddItemSubmit}
+              onCreateModal={setModalToCreate}
+            />
+          </Route>
+        </Switch>
+
         <Footer />
         {activeModal === "create" && (
           <AddItemModal
             onClose={handleCloseModal}
             onAddItem={handleAddItemSubmit}
-            isOpen={activeModal === 'create'} 
+            isOpen={activeModal === "create"}
           />
         )}
         {activeModal === "preview" && (
-          <ItemModal isOpen={setModalToCreate} onCardDelete= {handleDeleteCard} selectedCard={selectedCard} onClose={handleCloseModal} />
+          <ItemModal
+            isOpen={setModalToCreate}
+            onCardDelete={handleDeleteCard}
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
