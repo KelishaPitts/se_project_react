@@ -2,7 +2,7 @@ import "../blocks/weather.css";
 import { weatherOptions } from "../utils/constants";
 
 
-const Weather = ({type, weatherTemp}) => {
+const WeatherCard = ({type, weatherTemp}) => {
   const currentHour = new Date().getHours();
   const isDay = () => {
     if (currentHour < 17 && currentHour > 5) {
@@ -14,7 +14,7 @@ const Weather = ({type, weatherTemp}) => {
   const imageSrc = weatherOptions.find((item) => {
     return item.day === isDay() && item.type === type;
   });
- console.log(imageSrc?.url)
+
 
   const imageSrcUrl = imageSrc?.url || null;
   
@@ -25,4 +25,4 @@ const Weather = ({type, weatherTemp}) => {
     </section>
   );
 };
-export default Weather;
+export default WeatherCard;

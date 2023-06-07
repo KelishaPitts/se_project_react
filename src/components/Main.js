@@ -1,5 +1,5 @@
 import "../blocks/main.css";
-import Weather from "./WeatherCard.js";
+import WeatherCard from "./WeatherCard.js";
 import ItemCard from "./ItemCard.js";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 import { useContext } from "react";
@@ -43,7 +43,7 @@ function Main({
 
   return (
     <main className="main">
-      <Weather
+      <WeatherCard
         day={false}
         type={overCast}
         weatherTemp={weatherTemp}
