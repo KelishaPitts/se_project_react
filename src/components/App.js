@@ -21,7 +21,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [temp, setTemp] = useState(0);
   const [city, setCity] = useState("");
-  const [overCast, setOverCast] = useState("Clouds");
+  const [overCast, setOverCast] = useState("Rain");
   const setModalToCreate = () => {
     setActiveModal("create");
   };
@@ -101,27 +101,17 @@ function App() {
   useEffect(() => {
     getWeatherForcast()
       .then((data) => {
-        const temperature = parseWeatherData(data)[0];
-        const temperatureF = parseWeatherData(data)[1];
-        const temperatureC = parseWeatherData(data)[2];
-        const city = parseWeatherData(data)[3];
-        const overCast = parseWeatherData(data)[4];
+        const temperature = parseWeatherData(data).temperature;
+        const city = parseWeatherData(data).city;
+        const overCast = parseWeatherData(data).forcast;
         setCity(city);
         setOverCast(overCast);
-        setTemp([temperature, temperatureF, temperatureC]);
+        setTemp(temperature);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-
-  const getWeatherConvert = () => {
-    if (currentTemperatureUnit === "F") {
-      return temp[1];
-    } else if (currentTemperatureUnit === "C") {
-      return temp[2];
-    }
-  };
 
   return (
     <div className="page">
@@ -133,7 +123,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Main
-              weatherTemp={getWeatherConvert()}
+              weatherTemp={temp}
               onSelectCard={handleSelectedCard}
               overCast={overCast}
               onCardDelete={handleDeleteCard}

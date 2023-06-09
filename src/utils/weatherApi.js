@@ -1,12 +1,5 @@
 import { latitude, longitude, APIkey } from "./constants";
-
-const handleResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  }
-  // if the server returns an error, reject the promise
-  return Promise.reject(`Error: ${res.status}`);
-};
+import { handleResponse } from "./api.js";
 
 export const getWeatherForcast = () => {
   const weatherApi = fetch(
@@ -18,9 +11,16 @@ export const getWeatherForcast = () => {
 export const parseWeatherData = (data) => {
   const main = data.main;
   const temperature = Math.ceil(main && main.temp);
-  const temperatureF = `${Math.round(temperature)}°F`;
-  const temperatureC = `${Math.round(((temperature - 32) * 5) / 9)}°C`;
   const weatherSky = data.weather[0].main;
   const cityName = data.name;
-  return [temperature, temperatureF, temperatureC, cityName, weatherSky];
+  const weatherData = {
+    temperature: {
+      F: Math.round(temperature),
+      C: Math.round(((temperature - 32) * 5) / 9),
+    },
+    forcast: weatherSky,
+    city: cityName,
+  };
+
+  return weatherData;
 };

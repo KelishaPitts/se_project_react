@@ -12,25 +12,21 @@ function Main({
   onCardDelete,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const temp = weatherTemp?.[currentTemperatureUnit] || 99;
   const getWeatherType = () => {
-    const weatherValue = parseInt(weatherTemp);
     if (
-      (weatherValue >= 86 && currentTemperatureUnit === "F") ||
-      (weatherValue >= 30 && currentTemperatureUnit === "C")
+      (temp >= 86 && currentTemperatureUnit === "F") ||
+      (temp >= 30 && currentTemperatureUnit === "C")
     ) {
       return "hot";
     } else if (
-      (weatherValue >= 66 &&
-        weatherValue <= 85 &&
-        currentTemperatureUnit === "F") ||
-      (weatherValue >= 19 &&
-        weatherValue <= 29 &&
-        currentTemperatureUnit === "C")
+      (temp >= 66 && temp <= 85 && currentTemperatureUnit === "F") ||
+      (temp >= 19 && temp <= 29 && currentTemperatureUnit === "C")
     ) {
       return "warm";
     } else if (
-      (weatherValue <= 65 && currentTemperatureUnit === "F") ||
-      (weatherValue <= 28 && currentTemperatureUnit === "C")
+      (temp <= 65 && currentTemperatureUnit === "F") ||
+      (temp <= 28 && currentTemperatureUnit === "C")
     ) {
       return "cold";
     }
@@ -46,11 +42,11 @@ function Main({
       <WeatherCard
         day={false}
         type={overCast}
-        weatherTemp={weatherTemp}
-        value={currentTemperatureUnit}
+        weatherTemp={temp}
+        currentTemperatureUnit={currentTemperatureUnit}
       />
       <section className="card__section" id="card-section">
-        Today is {weatherTemp} / You may want to wear:
+        Today is {temp}°{currentTemperatureUnit} / You may want to wear:
         <div className="card__items">
           {filterCards.map((item) => (
             <ItemCard

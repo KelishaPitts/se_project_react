@@ -1,7 +1,9 @@
 import "../blocks/header.css";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from "react-router-dom";
+import logo from "../images/logo.svg";
+import avatar from "../images/avatar.svg";
 
 const Header = ({ onCreateModal, city }) => {
   const currentDate = new Date().toLocaleString("default", {
@@ -19,38 +21,46 @@ const Header = ({ onCreateModal, city }) => {
 
   return (
     <header className="header">
-      <div className="header__logo">
-        <div>
-          <NavLink to="/">
-            <img src={require("../images/logo.svg").default} alt="logo" />
-          </NavLink>
+      <div className="header__container-right">
+        <div className="header__logo-container">
+          <div className="header__logo">
+            <NavLink to="/">
+              <img src={logo} alt="logo" />
+            </NavLink>
+          </div>
+          <button className="header__button-modal" />
         </div>
-        <div>
+        <div className="header__location">
           {currentDate}, {city}
         </div>
       </div>
-      <div className="header__avatar-logo">
-        <ToggleSwitch
-          id="toggleSwitch"
-          handleToggle={handleToggleSwitchChange}
-          onChange={handleToggleSwitchChange}
-          value={currentTemperatureUnit}
-        />
-        <div>
+
+      <div className="header__container-left">
+        <div className="header__temp-switch">
+          <ToggleSwitch
+            id="toggleSwitch"
+            handleToggle={handleToggleSwitchChange}
+            onChange={handleToggleSwitchChange}
+            value={currentTemperatureUnit}
+          />
+        </div>
+        <div className="header__nav">
           <button
             className="header__addButton"
-            type="text"
+            type="submit"
             onClick={() => onCreateModal()}
           >
             {" "}
             + Add Clothes
           </button>
-        </div>
-        <div>Name</div>
-        <div>
-          <NavLink to="/profile">
-            <img src={require("../images/avatar.svg").default} alt="avatar" />
-          </NavLink>
+          <div className="header__avatar-container">
+            <div className="header__name">Name</div>
+            <div className="header__avatar">
+              <NavLink to="/profile">
+                <img src={avatar} alt="avatar" />
+              </NavLink>
+            </div>
+          </div>
         </div>
       </div>
     </header>
