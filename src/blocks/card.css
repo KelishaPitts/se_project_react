@@ -25,13 +25,21 @@
     gap: 17px;
     justify-content: center;
     margin: 34px 0 0 0;
+}
 
+.card__header{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    gap: 10px;
+    
 
 }
 
 .card__name {
     display: flex;
-    position: absolute;
+    align-content: center;
     background: white;
     margin-top: 18px;
     padding: 2px 12px;
@@ -40,6 +48,43 @@
     font-size: 16px;
     line-height: 20px;
 
+}
+
+.card__like-button{
+    background-image:url("../images/like-button.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: flex;
+    right: -200px;
+    margin-top: 18px;
+    width: 18px;
+    height: 15px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.card__like-button:hover{
+    opacity: 0.6;
+    
+}
+
+.card__like-button-liked{
+    background-image: url("../images/like-button-liked.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: flex;
+    right: -200px;
+    margin-top: 18px;
+    width: 18px;
+    height: 15px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    
+    
 }
 
 .card__image {

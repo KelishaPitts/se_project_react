@@ -70,7 +70,7 @@ const weatherOptions = [
   {
     url: require("../images/storm-night.svg").default,
     day: false,
-    type: "storm",
+    type: "Thunderstorm",
   },
   { url: require("../images/sunny-day.svg").default, day: true, type: "Clear" },
   {

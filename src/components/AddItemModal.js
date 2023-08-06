@@ -34,7 +34,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
   function handleSubmit(evt) {
     // call onAddItem with appropriate arguments
     evt.preventDefault();
-    onAddItem({ name, weather, imageUrl });
+    onAddItem(name, weather, imageUrl );
   }
 
   return (

@@ -1,5 +1,7 @@
 import ItemCard from "./ItemCard.js";
 import "../blocks/clothesSection.css";
+import {CurrentUserContext} from "../contexts/CurrentUserContext.js";
+import { useContext } from "react";
 
 const ClothesSection = ({
   onSelectCard,
@@ -8,10 +10,12 @@ const ClothesSection = ({
   onAddItem,
   onCreateModal}
 ) => {
+  const currentUser = useContext(CurrentUserContext)
   return (
+    
     <div className="clothesSection">
       <div className="clothesSection__items">
-        {clothingItems?.map((item) => (
+        {clothingItems.filter((clothingItems)=>clothingItems.owner=== undefined ? "": currentUser?.data?._id).map((item) => { return (
           <ItemCard
             key={item.id}
             item={item}
@@ -20,7 +24,7 @@ const ClothesSection = ({
             onCardDelete={onCardDelete}
             onCreateModal={onCreateModal}
           />
-        ))}
+        )})}
       </div>
     </div>
   );

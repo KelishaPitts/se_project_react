@@ -6,12 +6,16 @@ const Profile = ({
   clothingItems,
   onSelectCard,
   onCardDelete,
+  onChangeProfile,
+  onLogout,
   onCreateModal,
   onAddItem}
 ) => {
   return (
+    
     <div className="profile">
-      <SideBar />
+      <SideBar onChangeProfile={onChangeProfile}
+  onLogout={onLogout}/>
       <div className="profile__container">
         <div className="profile__header">
           <div>Your Items</div>

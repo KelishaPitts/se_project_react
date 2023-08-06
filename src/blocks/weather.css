@@ -6,6 +6,8 @@
 .weather {
     display: flex;
     position: relative;
+    margin: 0;
+    padding: 0;
 
 }
 
@@ -18,21 +20,25 @@
     font-size: 36px;
     line-height: 40px;
     color: #FFFFFF;
-    padding: 20px 16px;
+    margin: 20px 16px;
 
 }
 
 .weather__bar {
     width: 100%;
     min-height: 80px;
-    margin: 0;
-    padding: 0;
+    
 
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
     .weather__bar {
-        min-width: 343px;
+        min-width: 320px;
+        object-fit: cover;
+        object-position: right;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
 
     }
+
 }
