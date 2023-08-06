@@ -5,6 +5,7 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitCon
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
+
 function Main({
   onLike,
   weatherTemp,
@@ -14,7 +15,10 @@ function Main({
   onCardDelete,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const {currentUser} = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
+  
+  
+
   const temp = weatherTemp?.[currentTemperatureUnit] || 99;
   const getWeatherType = () => {
     if (
@@ -51,7 +55,8 @@ function Main({
       <section className="card__section" id="card-section">
         Today is {temp}°{currentTemperatureUnit} / You may want to wear:
         <div className="card__items">
-          {filterCards.filter((clothingItems)=>clothingItems.owner=== undefined ? "": currentUser?.data?._id).map((item) => (
+          {filterCards.filter((clothingItems)=>clothingItems.owner=== undefined ? "": currentUser?.data?.id).map((item) => {return(
+            
             <ItemCard
               onLike={onLike}
               key={item.id}
@@ -59,7 +64,7 @@ function Main({
               onSelectCard={onSelectCard}
               onCardDelete={onCardDelete}
             />
-          ))}
+          )})}
         </div>
       </section>
     </main>

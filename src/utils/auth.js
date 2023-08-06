@@ -32,7 +32,7 @@ export const signIn = ({ email, password }) => {
   }).then(handleResponse)
   .then((data)=>{
     if(data){
-      localStorage.getItem("jwt",data.token)
+      localStorage.setItem("jwt",data.token)
       return data
     }
   })

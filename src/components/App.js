@@ -36,7 +36,7 @@ function App() {
   const [overCast, setOverCast] = useState("Rain");
   const[loggedIn, setLoggedIn] = useState(false);
   const[currentUser, setCurrentUser] = useState({});
-  const[token, setToken] = useState("")
+  const[token, ] = useState("")
  
 
 
@@ -99,7 +99,7 @@ function App() {
           console.log(err);
         });
       }
-    }, [token]);
+    }, []);
 
   
 
