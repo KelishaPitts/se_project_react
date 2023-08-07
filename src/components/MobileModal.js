@@ -7,6 +7,7 @@ import "../blocks/modal.css";
 
 const MobileModal =({onCreateModal, onLogin, onLoginModal, onRegisterModal, onClose})=>{
   const currentUser = useContext(CurrentUserContext);
+  const userData = currentUser? currentUser: {name: "", avatar: ""}
     return(
         <div className="modal__header">
         <div className="modal__container-item">
@@ -27,10 +28,10 @@ const MobileModal =({onCreateModal, onLogin, onLoginModal, onRegisterModal, onCl
         </button>
         { onLogin ?
         <div className="header__avatar-container">
-          <div className="header__name">{currentUser.name}</div>
+          <div className="header__name">{userData.name}</div>
           <div className="header__avatar">
             <NavLink to="/profile">
-              <img className="header__avatar-image" src={currentUser.avatar} alt="avatar" />
+              <img className="header__avatar-image" src={userData.avatar} alt="avatar" />
             </NavLink>
           </div>
         </div>

@@ -14,11 +14,14 @@ const Header = ({ onCreateModal, onLoginModal, onRegisterModal, city, showMobile
     day: "numeric",
   });
 
+
   const currentUser = useContext(CurrentUserContext);
-const userData = currentUser? currentUser: {name: "", avatar: ""}
+
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isMobile, IsNotMobile] = useState(true)
  
+  const userData = currentUser? currentUser: {name: "", avatar: ""}
+
 
   const handleToggleSwitchChange = () => {
     
@@ -94,9 +97,9 @@ useEffect(() => {
             {userData?.name ? 
             <div className="header__avatar">
               <NavLink to="/profile">
-                <img className="header__avatar-image" src={userData.avatar} alt="avatar" />
+                <img className="header__avatar-image" src={userData?.avatar} alt="avatar" />
               </NavLink>
-            </div>: userData.name?.[0]}
+            </div>: userData.name}
           </div> </>:<div> 
                   <button className="header__signUp"
                   type="submit"
