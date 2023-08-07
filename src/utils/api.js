@@ -60,7 +60,7 @@ export const deleteItem = (id) => {
 };
 
 export const updateUser = (data) =>{
-  return fetch(`${baseUrl}/items/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
