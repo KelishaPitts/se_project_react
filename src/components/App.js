@@ -36,7 +36,7 @@ function App() {
   const [overCast, setOverCast] = useState("Rain");
   const[loggedIn, setLoggedIn] = useState(false);
   const[currentUser, setCurrentUser] = useState({});
-  const[token, ] = useState("")
+  
  
 
 
@@ -110,6 +110,7 @@ function App() {
     .then((data)=> {
       setLoggedIn(true);
       setCurrentUser(data.data)
+      signIn({email, password})
       handleCloseModal();
     })
     .catch((err) => {
@@ -202,6 +203,7 @@ const handleUpdateProfile = ({name, avatar}) => {
     getItemList()
       .then((items) => {
         setClothingItems(items);
+        console.log(items)
       })
       .catch((err) => {
         console.log(err);

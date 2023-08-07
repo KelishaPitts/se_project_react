@@ -11,11 +11,13 @@ const ClothesSection = ({
   onCreateModal}
 ) => {
   const currentUser = useContext(CurrentUserContext)
+  console.log(clothingItems[0].owner)
   return (
     
     <div className="clothesSection">
       <div className="clothesSection__items">
-        {clothingItems.filter((clothingItems)=>clothingItems.owner=== undefined ? "": currentUser?.data?._id).map((item) => { return (
+        {clothingItems.filter((item)=>item?.owner === currentUser._id).map((item) => {  
+        return (
           <ItemCard
             key={item.id}
             item={item}

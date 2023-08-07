@@ -34,7 +34,6 @@ export const getItemList = () => {
 };
 
 export const addItem = (name, weather, imageUrl) => {
-  debugger
   
   return fetch(`${baseUrl}/items`, {
     method: "POST",
@@ -55,6 +54,7 @@ export const deleteItem = (id) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken("jwt")}`,
     },
   }).then(handleResponse);
 };
@@ -76,6 +76,7 @@ export const addCardLike = (id) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken("jwt")}`,
     },
   }).then(handleResponse);
 };
@@ -85,6 +86,7 @@ export const removeCardLike = (id) => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${getToken("jwt")}`,
     },
   }).then(handleResponse);
 };

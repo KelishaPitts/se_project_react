@@ -49,7 +49,9 @@ const weatherOptions = [
     type: "Clouds",
   },
   { url: require("../images/fog-day.svg").default, day: true, type: "Fog" },
-  { url: require("../images/fog-night.svg").default, day: false, type: "Fog" },
+  { url: require("../images/fog-night.svg").default, day: false, type: "Fog"  },
+  { url: require("../images/fog-day.svg").default, day: true, type: "Mist" },
+  { url: require("../images/fog-night.svg").default, day: false, type: "Mist"  },
   { url: require("../images/rain-day.svg").default, day: true, type: "Rain" },
   {
     url: require("../images/rain-night.svg").default,

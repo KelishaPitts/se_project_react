@@ -99,7 +99,7 @@ useEffect(() => {
               <NavLink to="/profile">
                 <img className="header__avatar-image" src={userData?.avatar} alt="avatar" />
               </NavLink>
-            </div>: userData.name}
+            </div>: userData?.name[0]}
           </div> </>:<div> 
                   <button className="header__signUp"
                   type="submit"

@@ -13,6 +13,7 @@ export const parseWeatherData = (data) => {
   const temperature = Math.ceil(main && main.temp);
   const weatherSky = data.weather[0].main;
   const cityName = data.name;
+  console.log(weatherSky)
   const weatherData = {
     temperature: {
       F: Math.round(temperature),

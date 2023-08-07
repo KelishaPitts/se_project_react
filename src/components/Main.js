@@ -16,7 +16,7 @@ function Main({
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const currentUser = useContext(CurrentUserContext);
-  
+  console.log(currentUser._id)
   
 
   const temp = weatherTemp?.[currentTemperatureUnit] || 99;
@@ -41,7 +41,7 @@ function Main({
   const weatherType = getWeatherType();
 
   const filterCards = clothingItems.filter((item) => {
-    return item.weather.toLowerCase() === weatherType;
+    return item?.weather?.toLowerCase() === weatherType;
   });
 
   return (
@@ -55,7 +55,7 @@ function Main({
       <section className="card__section" id="card-section">
         Today is {temp}°{currentTemperatureUnit} / You may want to wear:
         <div className="card__items">
-          {filterCards.filter((clothingItems)=>clothingItems.owner=== undefined ? "": currentUser?.data?.id).map((item) => {return(
+          {filterCards.filter((item)=>item?.owner === currentUser._id).map((item) => 
             
             <ItemCard
               onLike={onLike}
@@ -64,7 +64,7 @@ function Main({
               onSelectCard={onSelectCard}
               onCardDelete={onCardDelete}
             />
-          )})}
+          )}
         </div>
       </section>
     </main>

@@ -8,7 +8,7 @@ const ItemCard = ({ item, onSelectCard, onLike }) => {
 const isLiked = item.likes.some(id => id === currentUser._id);
 
 // Create a variable which you then set in `className` for the like button
-const itemLikeButtonClassName =(`card__like-button ${isLiked ? "card__like-button": "card__like-button-liked"}`);
+const itemLikeButtonClassName =(`card__like-button ${isLiked ? "card__like-button-liked": "card__like-button"}`);
   return (
     <div key={item.id}>
       <div className="card__container">
