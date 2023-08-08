@@ -20,13 +20,84 @@
 
 }
 
+.modal__confirm{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Grotesk', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    z-index: 4;
+    padding: 50px;
+
+}
+
+.modal__confirm-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    max-width: 498px;
+    width: 100%;
+    height: 280px;
+    border-radius: 20px;
+    font-size: 1.25rem;
+    line-height: 24px;
+}
+.modal__confirm-delete{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    font-family: 'Cabinet Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FF4D00;
+    border: none;
+    padding: 0;
+    background:none;
+    cursor: pointer;
+    transition: opacity 1s ease;
+    margin-top: 48px;
+}
+
+.modal__button-cancel{
+    font-family: 'Grotesk', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: opacity 1s ease;
+    margin-top: 48px;
+    
+}
+
 .modal__header{
     visibility: hidden;
 }
 
 
+.modal__confirm-text{
+    text-align: center;
 
-.modal__button-close {
+}
+
+
+.modal__button-close, .modal__confirm-close {
     display: flex;
     position: absolute;
     background-image: url(../images/close.svg);
@@ -41,6 +112,10 @@
     border-radius: 0px;
     transition: opacity 1s ease;
     cursor: pointer;
+}
+
+.modal__confirm-close{
+    margin: -220px 2px 0 457px;
 }
 
 .modal__button-close:hover {
@@ -162,10 +237,18 @@
 
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
+    .modal__form{
+        
+    }
     .modal__image{
         max-width: 320px;
     }
-    .modal__container-item {
+
+    .modal__confirm-close{
+        margin: -220px 250px 0 450px;
+    }
+
+    .modal__container-item, .modal__confirm-item {
         max-width: 320px;
         font-size: 1rem;
     }
@@ -196,6 +279,13 @@
         font-weight: 700;
         z-index: 3;
     
+    }
+
+    .modal__button-cancel{
+        margin-top: 18px;
+    }
+    .modal__confirm-delete{
+        margin-top: 18px;
     }
 
     .modal__button-delete{

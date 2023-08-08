@@ -6,6 +6,7 @@ import logo from "../images/logo.svg";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 const Header = ({
+  isMobile,
   onCreateModal,
   onLoginModal,
   onRegisterModal,
@@ -21,7 +22,7 @@ const Header = ({
   const currentUser = useContext(CurrentUserContext);
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [isMobile, IsNotMobile] = useState(true);
+  
 
   const userData = currentUser ? currentUser : { name: "", avatar: "" };
 
@@ -30,21 +31,6 @@ const Header = ({
       ? setCurrentTemperatureUnit("C")
       : setCurrentTemperatureUnit("F");
   };
-
-  //choose the screen size
-  const handleResize = (evt) => {
-    evt.preventDefault();
-    if (window.innerWidth > 768) {
-      IsNotMobile(true);
-    } else {
-      IsNotMobile(false);
-    }
-  };
-
-  // create an event listener
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  });
 
   return (
     <header className="header">

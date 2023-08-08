@@ -21,7 +21,9 @@ import {
   addCardLike,
   removeCardLike,
 } from "../utils/api";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import MobileModal from "./MobileModal.js";
+import ConfirmModal from "./ConfirmModal";
 import ProtectedRoute from "./ProtectedRoute";
 import { signIn, signUp, checkToken } from "../utils/auth";
 import LoginModal from "./LoginModal";
@@ -29,12 +31,14 @@ import RegisterModal from "./RegisterModal";
 import ChangeProfileModal from "./ChangeProfileModal";
 
 function App() {
+  const [isMobile, IsNotMobile] = useState(true);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [activeModal, setActiveModal] = useState("");
   const [headerModal, setHeaderModal] = useState("");
   const [loginModal, setLoginModal] = useState("");
   const [registerModal, setRegisterModal] = useState("");
   const [changeProfileModal, setChangeProfileModal] = useState("");
+  const [confirmModal, setConfirmModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
   const [temp, setTemp] = useState(0);
@@ -42,7 +46,8 @@ function App() {
   const [overCast, setOverCast] = useState("Rain");
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-
+ 
+  const history = useHistory();
   const createHeaderModal = () => {
     setHeaderModal("create");
   };
@@ -57,6 +62,10 @@ function App() {
     setChangeProfileModal("create");
   };
 
+  const createConfirmModal = () => {
+    setConfirmModal("create");
+  };
+
   const setModalToCreate = () => {
     setActiveModal("create");
   };
@@ -66,15 +75,30 @@ function App() {
     setLoginModal("");
     setRegisterModal("");
     setChangeProfileModal("");
+    setConfirmModal("");
   };
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
   };
 
+
   const closeMobileMenuHandler = () => {
     setHeaderModal("");
   };
+  
+  const handleResize = (evt) => {
+    evt.preventDefault();
+    if (window.innerWidth > 768) {
+      IsNotMobile(true);
+    } else {
+      IsNotMobile(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  });
 
   const handleAddItemSubmit = (name, weather, imageUrl) => {
     addItem(name, weather, imageUrl)
@@ -101,7 +125,7 @@ function App() {
     }
   }, []);
 
-  //works
+  
   const handleRegister = ({ name, avatar, email, password }) => {
     signUp({ name, avatar, email, password })
       .then((data) => {
@@ -136,6 +160,7 @@ function App() {
       .then((res) => {
         setCurrentUser(res.data);
         setLoggedIn(true);
+        history.push("/profile");
         handleCloseModal();
       })
       .catch((err) => {
@@ -253,6 +278,7 @@ function App() {
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <Header
+          isMobile={isMobile}
             onClose={handleCloseModal}
             onCloseMobile={closeMobileMenuHandler}
             onLogin={loggedIn}
@@ -303,6 +329,7 @@ function App() {
               onCardDelete={handleDeleteCard}
               selectedCard={selectedCard}
               onClose={handleCloseModal}
+              onConfirm={createConfirmModal}
             />
           )}
           {headerModal === "create" && (
@@ -338,6 +365,13 @@ function App() {
               onChangeProfile={handleUpdateProfile}
               onChangeProfileModal={createChangeProfileModal}
               onClose={handleCloseModal}
+            />
+          )}
+           {confirmModal === "create" && (
+            <ConfirmModal
+              onClose={handleCloseModal}
+              onDelete={handleDeleteCard}
+              selectedCard={selectedCard}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>
