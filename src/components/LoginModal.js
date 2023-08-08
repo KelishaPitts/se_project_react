@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import ModalWithForm from "./ModalWithForm";
 
-const LoginModal = ({ isOpen, onSignin, onCloseModal }) => {
+const LoginModal = ({ isOpen, onSignin, onCloseModal, onRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
-
 
   // use a useEffect hook to reset the input field state to empty strings when
   // the modal is opened
@@ -24,22 +22,20 @@ const LoginModal = ({ isOpen, onSignin, onCloseModal }) => {
   const onPasswordChange = (evt) => {
     setPassword(evt.target.value);
   };
- 
+
   function handleSubmit(evt) {
     // call onAddItem with appropriate arguments
     evt.preventDefault();
-    
-    console.log(
-    onSignin({email, password}))
-    
+
+    console.log(onSignin({ email, password }));
   }
-    return (
-        <ModalWithForm
-        buttonText="Log in"
-        title="Log in"
-        onClose={onCloseModal}
-        onSubmit={handleSubmit}>
-        
+  return (
+    <ModalWithForm
+      buttonText="Log in"
+      title="Log in"
+      onClose={onCloseModal}
+      onSubmit={handleSubmit}
+    >
       <div>
         <label className="form__label">
           Email
@@ -69,12 +65,11 @@ const LoginModal = ({ isOpen, onSignin, onCloseModal }) => {
             onChange={onPasswordChange}
           />
         </label>
-        <p>or Register</p>
-        
-      </div>    
-
-        </ModalWithForm>
-);
-
+        <button
+        className="form__button-register"
+        onClick={()=>onRegister()}>or Register</button>
+      </div>
+    </ModalWithForm>
+  );
 };
 export default LoginModal;

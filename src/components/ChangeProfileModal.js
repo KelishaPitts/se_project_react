@@ -1,9 +1,9 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import ModalWithForm from "./ModalWithForm";
 
 const ChangeProfileModal = ({ isOpen, onChangeProfile, onCloseModal }) => {
-          // declare state for each input field
-  
+  // declare state for each input field
+
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
 
@@ -24,21 +24,19 @@ const ChangeProfileModal = ({ isOpen, onChangeProfile, onCloseModal }) => {
   const onAvatarChange = (evt) => {
     setAvatar(evt.target.value);
   };
-  
 
   function handleSubmit(evt) {
     // call onAddItem with appropriate arguments
     evt.preventDefault();
-    onChangeProfile({name, avatar });
+    onChangeProfile({ name, avatar });
   }
-    return (
-        <ModalWithForm
-        buttonText="Save Changes"
-        title="Change profile data"
-        onClose={onCloseModal}
-        onSubmit={handleSubmit}
-        >
-        
+  return (
+    <ModalWithForm
+      buttonText="Save Changes"
+      title="Change profile data"
+      onClose={onCloseModal}
+      onSubmit={handleSubmit}
+    >
       <div>
         <label className="form__label">
           *Name
@@ -56,7 +54,7 @@ const ChangeProfileModal = ({ isOpen, onChangeProfile, onCloseModal }) => {
       </div>
       <div>
         <label className="form__label">
-           Avatar URL*
+          Avatar URL*
           <input
             value={avatar}
             className="form__input"
@@ -68,10 +66,9 @@ const ChangeProfileModal = ({ isOpen, onChangeProfile, onCloseModal }) => {
             onChange={onAvatarChange}
           />
         </label>
-      </div>      
-
-        </ModalWithForm>);
-
+      </div>
+    </ModalWithForm>
+  );
 };
 
 export default ChangeProfileModal;

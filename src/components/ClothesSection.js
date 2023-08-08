@@ -1,32 +1,37 @@
 import ItemCard from "./ItemCard.js";
 import "../blocks/clothesSection.css";
-import {CurrentUserContext} from "../contexts/CurrentUserContext.js";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 import { useContext } from "react";
 
 const ClothesSection = ({
+  onLike,
   onSelectCard,
   onCardDelete,
   clothingItems,
   onAddItem,
-  onCreateModal}
-) => {
-  const currentUser = useContext(CurrentUserContext)
-  console.log(clothingItems[0].owner)
+  onCreateModal,
+  selectedCard,
+}) => {
+  const currentUser = useContext(CurrentUserContext);
   return (
-    
     <div className="clothesSection">
       <div className="clothesSection__items">
-        {clothingItems.filter((item)=>item?.owner === currentUser._id).map((item) => {  
-        return (
-          <ItemCard
-            key={item.id}
-            item={item}
-            onAddItem={onAddItem}
-            onSelectCard={onSelectCard}
-            onCardDelete={onCardDelete}
-            onCreateModal={onCreateModal}
-          />
-        )})}
+        {clothingItems
+          .filter((item) => item?.owner === currentUser._id)
+          .map((item) => {
+            return (
+              <ItemCard
+                onLike={onLike}
+                key={item._id}
+                item={item}
+                onAddItem={onAddItem}
+                selectedCard={selectedCard}
+                onSelectCard={onSelectCard}
+                onCardDelete={onCardDelete}
+                onCreateModal={onCreateModal}
+              />
+            );
+          })}
       </div>
     </div>
   );
