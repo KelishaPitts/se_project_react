@@ -46,7 +46,7 @@ function App() {
   const [overCast, setOverCast] = useState("Rain");
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
- 
+
   const history = useHistory();
   const createHeaderModal = () => {
     setHeaderModal("create");
@@ -82,14 +82,13 @@ function App() {
     setSelectedCard(card);
   };
 
-
   const closeMobileMenuHandler = () => {
     setHeaderModal("");
   };
-  
+
   const handleResize = (evt) => {
     evt.preventDefault();
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 425) {
       IsNotMobile(true);
     } else {
       IsNotMobile(false);
@@ -125,7 +124,6 @@ function App() {
     }
   }, []);
 
-  
   const handleRegister = ({ name, avatar, email, password }) => {
     signUp({ name, avatar, email, password })
       .then((data) => {
@@ -187,32 +185,33 @@ function App() {
       });
   };
 
-  const handleLikeClick = (id, isLiked ) => {
-    console.log(id)
+  const handleLikeClick = (id, isLiked) => {
+    console.log(id);
     // Check if this card is now liked
-    if(!isLiked){
+    if (!isLiked) {
       // if so, send a request to add the user's id to the card's likes array
-        
-          // the first argument is the card's id
-          addCardLike(id, currentUser._id)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard.data : c))
-            );
-          })
-          .catch((err) => console.log(err))
-        }else{ // if not, send a request to remove the user's id from the card's likes array
-        
-          // the first argument is the card's id
-          removeCardLike(id, currentUser._id) 
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
-            );
-          })
-          .catch((err) => console.log(err));
-  }
-}; 
+
+      // the first argument is the card's id
+      addCardLike(id, currentUser._id)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((c) => (c?._id === id ? updatedCard.data : c))
+          );
+        })
+        .catch((err) => console.log(err));
+    } else {
+      // if not, send a request to remove the user's id from the card's likes array
+
+      // the first argument is the card's id
+      removeCardLike(id, currentUser._id)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((c) => (c?._id === id ? updatedCard : c))
+          );
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
@@ -278,7 +277,7 @@ function App() {
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <Header
-          isMobile={isMobile}
+            isMobile={isMobile}
             onClose={handleCloseModal}
             onCloseMobile={closeMobileMenuHandler}
             onLogin={loggedIn}
@@ -367,7 +366,7 @@ function App() {
               onClose={handleCloseModal}
             />
           )}
-           {confirmModal === "create" && (
+          {confirmModal === "create" && (
             <ConfirmModal
               onClose={handleCloseModal}
               onDelete={handleDeleteCard}

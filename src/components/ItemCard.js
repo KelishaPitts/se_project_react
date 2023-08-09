@@ -10,13 +10,13 @@ const ItemCard = ({ item, onSelectCard, onLike}) => {
     isLiked ? "card__like-button-liked" : "card__like-button"
   }`;
   return (
-    <div key={item._id}>
+    <div key={item?._id}>
       <div className="card__container">
         <div className="card__header">
-          <div className="card__name">{item.name}</div>
+          <div className="card__name">{item?.name}</div>
           <button
             className={itemLikeButtonClassName}
-            onClick={() => onLike(item._id, isLiked)}
+            onClick={() => onLike(item?._id, isLiked)}
           />
         </div>
         <img

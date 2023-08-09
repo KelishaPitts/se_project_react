@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import ModalWithForm from "./ModalWithForm";
+import { useForm } from "react-hook-form";
 
-const LoginModal = ({ isOpen, onSignin, onCloseModal, onRegister }) => {
+const LoginModal = ({ isOpen, onSignin, onCloseModal}) => {
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,12 +28,12 @@ const LoginModal = ({ isOpen, onSignin, onCloseModal, onRegister }) => {
   function handleSubmit(evt) {
     // call onAddItem with appropriate arguments
     evt.preventDefault();
-
-    console.log(onSignin({ email, password }));
+    onSignin({ email, password });
   }
   return (
     <ModalWithForm
       buttonText="Log in"
+      altText="or Register"
       title="Log in"
       onClose={onCloseModal}
       onSubmit={handleSubmit}
@@ -65,9 +67,6 @@ const LoginModal = ({ isOpen, onSignin, onCloseModal, onRegister }) => {
             onChange={onPasswordChange}
           />
         </label>
-        <button
-        className="form__button-register"
-        onClick={()=>onRegister()}>or Register</button>
       </div>
     </ModalWithForm>
   );

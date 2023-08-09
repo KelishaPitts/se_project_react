@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import "../blocks/modal.css";
 
-const ItemModal = ({selectedCard, onClose, onConfirm }) => {
+const ItemModal = ({ selectedCard, onClose, onConfirm }) => {
   const currentUser = useContext(CurrentUserContext);
   const isOwn = selectedCard.owner === currentUser._id;
 
@@ -17,7 +17,7 @@ const ItemModal = ({selectedCard, onClose, onConfirm }) => {
         <button
           className="modal__button-close"
           type="button"
-          onClick={()=>onClose()}
+          onClick={() => onClose()}
         />
         <img
           className="modal__image"
@@ -34,7 +34,10 @@ const ItemModal = ({selectedCard, onClose, onConfirm }) => {
 
           <button
             type="text"
-            onClick={() => onConfirm()}
+            onClick={() => {
+              onClose();
+              onConfirm();
+            }}
             className={itemDeleteButtonClassName}
           >
             Delete item

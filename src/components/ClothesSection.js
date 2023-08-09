@@ -17,12 +17,12 @@ const ClothesSection = ({
     <div className="clothesSection">
       <div className="clothesSection__items">
         {clothingItems
-          .filter((item) => item?.owner === currentUser._id)
+          .filter((item) => item?.owner === currentUser?._id)
           .map((item) => {
             return (
               <ItemCard
                 onLike={onLike}
-                key={item._id}
+                key={item?._id}
                 item={item}
                 onAddItem={onAddItem}
                 selectedCard={selectedCard}

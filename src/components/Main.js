@@ -53,7 +53,7 @@ function Main({
           {filterCards.map((item) => (
             <ItemCard
               onLike={onLike}
-              key={item._id}
+              key={item?._id}
               item={item}
               onSelectCard={onSelectCard}
               onCardDelete={onCardDelete}

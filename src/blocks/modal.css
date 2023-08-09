@@ -20,7 +20,7 @@
 
 }
 
-.modal__confirm{
+.modal__confirm {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -53,7 +53,8 @@
     font-size: 1.25rem;
     line-height: 24px;
 }
-.modal__confirm-delete{
+
+.modal__confirm-delete {
     display: flex;
     align-items: center;
     justify-self: center;
@@ -65,13 +66,13 @@
     color: #FF4D00;
     border: none;
     padding: 0;
-    background:none;
+    background: none;
     cursor: pointer;
     transition: opacity 1s ease;
     margin-top: 48px;
 }
 
-.modal__button-cancel{
+.modal__button-cancel {
     font-family: 'Grotesk', 'Arial', sans-serif;
     font-size: 20px;
     font-weight: 700;
@@ -83,21 +84,22 @@
     cursor: pointer;
     transition: opacity 1s ease;
     margin-top: 48px;
-    
+
 }
 
-.modal__header{
+.modal__header {
     visibility: hidden;
 }
 
 
-.modal__confirm-text{
+.modal__confirm-text {
     text-align: center;
 
 }
 
 
-.modal__button-close, .modal__confirm-close {
+.modal__button-close,
+.modal__confirm-close {
     display: flex;
     position: absolute;
     background-image: url(../images/close.svg);
@@ -114,7 +116,7 @@
     cursor: pointer;
 }
 
-.modal__confirm-close{
+.modal__confirm-close {
     margin: -220px 2px 0 457px;
 }
 
@@ -130,24 +132,25 @@
     font-size: 20px;
     line-height: 24px;
     color: #FF4D00;
-    margin: 0 32px 0 0 ;
+    margin: 0 32px 0 0;
     border: none;
     padding: 0;
-    background:none;
+    background: none;
     cursor: pointer;
     transition: opacity 1s ease;
 
 }
-.modal__description{
+
+.modal__description {
     display: flex;
     justify-content: space-between
 }
 
-.modal__button-delete_visible{
- visibility: visible;
+.modal__button-delete_visible {
+    visibility: visible;
 }
 
-.modal__button-delete_hidden{
+.modal__button-delete_hidden {
     visibility: hidden;
 
 }
@@ -221,6 +224,24 @@
 
 }
 
+.modal__text-alt {
+    font-family: 'Grotesk', 'Arial', sans-serif;
+    color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: opacity 1s ease;
+    margin: 42px 0 0 2px;
+
+}
+
+
 .modal__button-submit:hover {
     opacity: 0.6;
 
@@ -236,28 +257,30 @@
 }
 
 
-@media screen and (min-width: 320px) and (max-width: 768px) {
-    .modal__form{
-        
-    }
-    .modal__image{
+
+@media screen and (min-width: 320px) and (max-width: 426px) {
+
+    .modal__image {
         max-width: 320px;
     }
 
-    .modal__confirm-close{
+    .modal__confirm-close {
         margin: -220px 250px 0 450px;
     }
 
-    .modal__container-item, .modal__confirm-item {
+    .modal__container-item,
+    .modal__confirm-item {
         max-width: 320px;
         font-size: 1rem;
     }
 
     .modal__button-close {
-        margin: 16px 16px 0 280px;
+        margin-top: 5%;
+        margin-left: 85%;
 
     }
-    .modal__header{
+
+    .modal__header {
         visibility: visible;
         position: absolute;
         height: 208px;
@@ -269,7 +292,7 @@
         justify-content: center;
         align-items: center;
         margin: 0 auto 0 auto;
-        bottom: 0; 
+        bottom: 0;
         right: 0;
         left: 0;
         background: #FFFFFF;
@@ -278,20 +301,22 @@
         font-style: normal;
         font-weight: 700;
         z-index: 3;
-    
+
     }
 
-    .modal__button-cancel{
-        margin-top: 18px;
-    }
-    .modal__confirm-delete{
+    .modal__button-cancel {
         margin-top: 18px;
     }
 
-    .modal__button-delete{
+    .modal__confirm-delete {
+        margin-top: 18px;
+    }
+
+    .modal__button-delete {
         font-size: 1rem;
         line-height: 1rem;
     }
+
     .modal__hamburger-button-close {
         top: 27px;
         right: 27px;
@@ -312,5 +337,5 @@
         cursor: pointer;
     }
 
-    
+
 }

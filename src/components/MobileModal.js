@@ -4,9 +4,6 @@ import { useContext, useState } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import "../blocks/modal.css";
 
-
-
-
 const MobileModal = ({
   onCreateModal,
   onLogin,
@@ -16,14 +13,9 @@ const MobileModal = ({
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const userData = currentUser ? currentUser : { name: "", avatar: "" };
-  
-  const closeClick = (event) => {
-    if (event.target === event.currentTarget) {
-      onClose();
-    }
-  };
+
   return (
-    <div className="modal__header" onClick={closeClick}>
+    <div className="modal__header">
       <div className="modal__container-item">
         <button
           className="modal__hamburger-button-close"
@@ -31,11 +23,14 @@ const MobileModal = ({
           onClick={() => onClose()}
         />
 
-        <div className="header__nav" >
+        <div className="header__nav">
           <button
             className="header__addButton"
             type="submit"
-            onClick={() => onCreateModal()}
+            onClick={() => {
+              onClose();
+              onCreateModal();
+            }}
           >
             {" "}
             + Add Clothes
@@ -77,7 +72,7 @@ const MobileModal = ({
           )}
         </div>
       </div>
-   </div>
+    </div>
   );
 };
 export default MobileModal;

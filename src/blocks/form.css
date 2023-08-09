@@ -8,6 +8,7 @@
     padding: 28px 36px 28px;
 }
 
+
 .form__input {
     font-family: 'Grotesk', 'Arial', sans-serif;
     font-size: 16px;
@@ -56,21 +57,8 @@
 
 }
 
-.form__button-register , .form__button-login{
-    font-family: 'Grotesk', 'Arial', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0em;
-    text-align: left;
-    border: none;
-    background: none;
-    cursor: pointer;
-    transition: opacity 1s ease;
-
-}
-
-.form__button-register , .form__button-login:hover{
-    opacity: 0.6;
+.form__button-container {
+    display: flex;
+    flex-direction: row;
 
 }
