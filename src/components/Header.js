@@ -1,5 +1,5 @@
 import "../blocks/header.css";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import ToggleSwitch from "./ToggleSwitch";
 import { NavLink } from "react-router-dom";
 import logo from "../images/logo.svg";

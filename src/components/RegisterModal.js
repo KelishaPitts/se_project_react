@@ -46,6 +46,7 @@ const RegisterModal = ({ isOpen, onRegister, onCloseModal}) => {
       title="Sign up"
       onClose={onCloseModal}
       onSubmit={handleSubmit}
+      link="login"
     >
       <div>
         <label className="form__label">

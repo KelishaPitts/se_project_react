@@ -64,14 +64,16 @@ export const updateUser = (data) => {
   }).then(handleResponse);
 };
 
-export const addCardLike = (id, user) => {
+export const addCardLike = (id) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getToken("jwt")}`,
     },
-    body: JSON.stringify({user}),
+    body: JSON.stringify({
+      id
+    }),
   }).then(handleResponse);
 };
 
@@ -82,5 +84,8 @@ export const removeCardLike = (id) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${getToken("jwt")}`,
     },
+    body: JSON.stringify({
+      id
+    }),
   }).then(handleResponse);
 };

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 const ItemCard = ({ item, onSelectCard, onLike}) => {
+
   const currentUser = useContext(CurrentUserContext);
   // Check if the item was liked by the current user
   // The likes array should be an array of ids

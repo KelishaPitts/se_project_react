@@ -1,6 +1,6 @@
 import "../blocks/header.css";
 import { NavLink } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import "../blocks/modal.css";
 

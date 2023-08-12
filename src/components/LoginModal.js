@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ModalWithForm from "./ModalWithForm";
-import { useForm } from "react-hook-form";
 
 const LoginModal = ({ isOpen, onSignin, onCloseModal}) => {
  
@@ -37,6 +36,7 @@ const LoginModal = ({ isOpen, onSignin, onCloseModal}) => {
       title="Log in"
       onClose={onCloseModal}
       onSubmit={handleSubmit}
+      link="signup"
     >
       <div>
         <label className="form__label">

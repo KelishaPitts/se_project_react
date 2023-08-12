@@ -1,6 +1,7 @@
 import "../blocks/modal.css";
 import "../blocks/form.css";
 
+
 const ModalWithForm = ({
   children,
   buttonText,
@@ -8,7 +9,7 @@ const ModalWithForm = ({
   title,
   onClose,
   name,
-  onSubmit,
+  onSubmit
 }) => {
   return (
     <div className={`modal modal_type_${name}`}>
@@ -25,7 +26,8 @@ const ModalWithForm = ({
             <button className="modal__button-submit" type="submit">
               {buttonText}
             </button>
-            <p className="modal__text-alt">{altText}</p>
+            <div
+             className="modal__text-alt">{altText}</div>
           </div>
         </form>
       </div>

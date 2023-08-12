@@ -97,19 +97,32 @@ function App() {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+    
   });
 
+
+  const handleAddItemSubmit = async (name, weather, imageUrl) => {
+    try {
+      const { data: newCard } = await addItem(name, weather, imageUrl);
+      setClothingItems([newCard, ...clothingItems]);
+      handleCloseModal();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+/*
   const handleAddItemSubmit = (name, weather, imageUrl) => {
     addItem(name, weather, imageUrl)
-      .then(({ item }) => {
-        setClothingItems([item, ...clothingItems]);
+      .then(( {data : item }) => {
+        setClothingItems([item.data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
+*/
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
@@ -185,6 +198,7 @@ function App() {
       });
   };
 
+
   const handleLikeClick = (id, isLiked) => {
     console.log(id);
     // Check if this card is now liked
@@ -194,9 +208,9 @@ function App() {
       // the first argument is the card's id
       addCardLike(id, currentUser._id)
         .then((updatedCard) => {
-          setClothingItems((cards) =>
-            cards.map((c) => (c?._id === id ? updatedCard.data : c))
-          );
+          setClothingItems((cards) =>{
+            return cards.map((c) => (c._id === id ? updatedCard : c))
+        });
         })
         .catch((err) => console.log(err));
     } else {
@@ -205,13 +219,16 @@ function App() {
       // the first argument is the card's id
       removeCardLike(id, currentUser._id)
         .then((updatedCard) => {
-          setClothingItems((cards) =>
-            cards.map((c) => (c?._id === id ? updatedCard : c))
-          );
+          setClothingItems((cards) =>{
+            return cards.map((c) => (c._id === id ? updatedCard : c))
+        });
         })
         .catch((err) => console.log(err));
     }
   };
+
+
+  
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
