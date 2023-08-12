@@ -1,21 +1,13 @@
 import { useState, useEffect } from "react";
 import ModalWithForm from "./ModalWithForm";
 
-const ChangeProfileModal = ({ isOpen, onChangeProfile, onCloseModal }) => {
+const ChangeProfileModal = ({ isOpen, onChangeProfile, onCloseModal, currentUser}) => {
   // declare state for each input field
 
-  const [name, setName] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const [name, setName] = useState(currentUser.name);
+  const [avatar, setAvatar] = useState(currentUser.avatar);
 
-  // use a useEffect hook to reset the input field state to empty strings when
-  // the modal is opened
 
-  useEffect(() => {
-    if (isOpen === true) {
-      setName("");
-      setAvatar("");
-    }
-  }, [isOpen]);
 
   // create onChange handlers corresponding to each state variable
   const onNameChange = (evt) => {

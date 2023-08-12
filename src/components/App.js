@@ -381,6 +381,7 @@ function App() {
               onChangeProfile={handleUpdateProfile}
               onChangeProfileModal={createChangeProfileModal}
               onClose={handleCloseModal}
+              currentUser={currentUser}
             />
           )}
           {confirmModal === "create" && (
