@@ -16,9 +16,7 @@ const ClothesSection = ({
   return (
     <div className="clothesSection">
       <div className="clothesSection__items">
-        {clothingItems
-          .filter((item) => item?.owner === currentUser?._id)
-          .map((item) => {
+        {clothingItems.filter((item) => item?.owner === currentUser?._id).map((item) => {
             return (
               <ItemCard
                 onLike={onLike}
