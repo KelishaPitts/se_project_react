@@ -220,7 +220,7 @@ function App() {
       addCardLike(id, currentUser._id)
         .then((updatedCard) => {
           setClothingItems((cards) => {
-            cards.map((c) => (c._id === id ? {likes: console.log(updatedCard.likes), ...c.likes} : c.likes));
+            cards.map((c) => (c._id === id ? console.log({likes: updatedCard.likes, ...c.likes}) : c));
           });
         })
         .catch((err) => console.log(err));
@@ -231,7 +231,7 @@ function App() {
       removeCardLike(id, currentUser._id)
         .then((updatedCard) => {
           setClothingItems((cards) => {
-            cards.map((c) => (c._id === id ?  {likes:  updatedCard.likes} : c.likes));
+            cards.map((c) => (c._id === id ?  console.log({likes : updatedCard.likes}) : c));
           });
         })
         .catch((err) => console.log(err));
