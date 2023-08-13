@@ -46,6 +46,7 @@ function App() {
   const [overCast, setOverCast] = useState("Rain");
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
   const createHeaderModal = () => {
@@ -86,43 +87,39 @@ function App() {
     setHeaderModal("");
   };
 
-  const handleResize = (evt) => {
-    evt.preventDefault();
-    if (window.innerWidth > 425) {
-      IsNotMobile(true);
-    } else {
-      IsNotMobile(false);
-    }
-  };
-
+  
   useEffect(() => {
+    const handleResize = (evt) => {
+      evt.preventDefault();
+      if (window.innerWidth > 768) {
+        IsNotMobile(true);
+      } else {
+        IsNotMobile(false);
+      }
+    };
+
     window.addEventListener("resize", handleResize);
-    
-  });
+    return () => {
+      window.removeEventListener("resize", handleResize); // this is the clean up
+    };
+  }, []);
 
-
-  const handleAddItemSubmit = async (name, weather, imageUrl) => {
-    try {
-      const { data: newCard } = await addItem(name, weather, imageUrl);
-      setClothingItems([newCard, ...clothingItems]);
-      handleCloseModal();
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-/*
   const handleAddItemSubmit = (name, weather, imageUrl) => {
+    setIsLoading(true);
+
     addItem(name, weather, imageUrl)
-      .then(( {data : item }) => {
-        setClothingItems([item.data, ...clothingItems]);
+      .then(({ data: newCard }) => {
+        setClothingItems([newCard, ...clothingItems]);
         handleCloseModal();
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
-*/
+
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
@@ -138,6 +135,7 @@ function App() {
   }, []);
 
   const handleRegister = ({ name, avatar, email, password }) => {
+    setIsLoading(true);
     signUp({ name, avatar, email, password })
       .then((data) => {
         setLoggedIn(true);
@@ -147,10 +145,14 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   const handleUpdateProfile = ({ name, avatar }) => {
+    setIsLoading(true);
     updateUser({ name, avatar })
       .then((res) => {
         setCurrentUser(res.data);
@@ -158,10 +160,14 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   const handleSignIn = ({ email, password }) => {
+    setIsLoading(true);
     signIn({ email, password })
       .then((data) => {
         if (data.token) {
@@ -176,6 +182,9 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -186,6 +195,7 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
+    setIsLoading(true);
     deleteItem(card)
       .then(() => {
         const newCardList = clothingItems.filter((item) => item._id !== card);
@@ -195,12 +205,13 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
-
   const handleLikeClick = (id, isLiked) => {
-    console.log(id);
     // Check if this card is now liked
     if (!isLiked) {
       // if so, send a request to add the user's id to the card's likes array
@@ -208,9 +219,9 @@ function App() {
       // the first argument is the card's id
       addCardLike(id, currentUser._id)
         .then((updatedCard) => {
-          setClothingItems((cards) =>{
-            return cards.map((c) => (c._id === id ? updatedCard : c))
-        });
+          setClothingItems((cards) => {
+            cards.map((c) => (c._id === id ? console.log(updatedCard) : c));
+          });
         })
         .catch((err) => console.log(err));
     } else {
@@ -219,16 +230,13 @@ function App() {
       // the first argument is the card's id
       removeCardLike(id, currentUser._id)
         .then((updatedCard) => {
-          setClothingItems((cards) =>{
-            return cards.map((c) => (c._id === id ? updatedCard : c))
-        });
+          setClothingItems((cards) => {
+            cards.map((c) => (c._id === id ? updatedCard : c));
+          });
         })
         .catch((err) => console.log(err));
     }
   };
-
-
-  
 
   const handleToggleSwitchChange = () => {
     currentTemperatureUnit === "F"
@@ -334,6 +342,7 @@ function App() {
           <Footer />
           {activeModal === "create" && (
             <AddItemModal
+              isLoading={isLoading}
               onClose={handleCloseModal}
               onAddItem={handleAddItemSubmit}
               isOpen={activeModal === "create"}
@@ -360,6 +369,7 @@ function App() {
 
           {loginModal === "create" && (
             <LoginModal
+              isLoading={isLoading}
               onSignin={handleSignIn}
               onRegister={createRegisterModal}
               onLoginModal={createLoginModal}
@@ -369,6 +379,7 @@ function App() {
 
           {registerModal === "create" && (
             <RegisterModal
+              isLoading={isLoading}
               onRegisterModal={createRegisterModal}
               onRegister={handleRegister}
               onSignin={createLoginModal}
@@ -378,6 +389,7 @@ function App() {
 
           {changeProfileModal === "create" && (
             <ChangeProfileModal
+              isLoading={isLoading}
               onChangeProfile={handleUpdateProfile}
               onChangeProfileModal={createChangeProfileModal}
               onClose={handleCloseModal}
@@ -386,6 +398,7 @@ function App() {
           )}
           {confirmModal === "create" && (
             <ConfirmModal
+              isLoading={isLoading}
               onClose={handleCloseModal}
               onDelete={handleDeleteCard}
               selectedCard={selectedCard}

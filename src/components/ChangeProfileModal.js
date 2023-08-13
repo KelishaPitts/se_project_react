@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import ModalWithForm from "./ModalWithForm";
 
-const ChangeProfileModal = ({ isOpen, onChangeProfile, onCloseModal, currentUser}) => {
+const ChangeProfileModal = ({onChangeProfile, onCloseModal, currentUser, isLoading}) => {
   // declare state for each input field
 
   const [name, setName] = useState(currentUser.name);
   const [avatar, setAvatar] = useState(currentUser.avatar);
 
-
+  
 
   // create onChange handlers corresponding to each state variable
   const onNameChange = (evt) => {
@@ -24,7 +24,7 @@ const ChangeProfileModal = ({ isOpen, onChangeProfile, onCloseModal, currentUser
   }
   return (
     <ModalWithForm
-      buttonText="Save Changes"
+      buttonText={isLoading ? "Saving..." : "Save Changes"}
       title="Change profile data"
       onClose={onCloseModal}
       onSubmit={handleSubmit}

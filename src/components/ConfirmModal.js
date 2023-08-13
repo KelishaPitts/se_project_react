@@ -1,6 +1,6 @@
 import "../blocks/modal.css";
 
-const ConfirmModal = ({onDelete, onClose, selectedCard}) => {
+const ConfirmModal = ({onDelete, onClose, selectedCard, isLoading}) => {
   
   return (
     <div className="modal__confirm">
@@ -15,7 +15,7 @@ const ConfirmModal = ({onDelete, onClose, selectedCard}) => {
       <div>This action is irreversible.</div>
         <button
         className="modal__confirm-delete"
-        onClick={()=>onDelete(selectedCard._id)}>Yes, delete item</button>
+        onClick={()=>onDelete(selectedCard._id)}>{isLoading ? "deleting..." : "Yes, delete item"}</button>
         <button
         className="modal__button-cancel"
         onClick={()=>onClose()}>Cancel</button>

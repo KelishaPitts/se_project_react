@@ -35,7 +35,7 @@ function Main({
   };
   const weatherType = getWeatherType();
 
-  const filterCards = clothingItems.filter((item) => {
+  const filterCards = clothingItems?.filter((item) => {
     return item?.weather?.toLowerCase() === weatherType;
   });
 
@@ -50,7 +50,7 @@ function Main({
       <section className="card__section" id="card-section">
         Today is {temp}°{currentTemperatureUnit} / You may want to wear:
         <div className="card__items">
-          {filterCards.map((item) => (
+          {filterCards?.map((item) => (
             <ItemCard
               onLike={onLike}
               key={item?._id}

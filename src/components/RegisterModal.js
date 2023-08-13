@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ModalWithForm from "./ModalWithForm";
 
-const RegisterModal = ({ isOpen, onRegister, onCloseModal}) => {
+const RegisterModal = ({ isOpen, onRegister, onCloseModal, isLoading}) => {
   // declare state for each input field
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,7 +41,7 @@ const RegisterModal = ({ isOpen, onRegister, onCloseModal}) => {
   }
   return (
     <ModalWithForm
-      buttonText="Next"
+      buttonText={isLoading ? "Loading..." : "Next"}
       altText="or Login"
       title="Sign up"
       onClose={onCloseModal}
