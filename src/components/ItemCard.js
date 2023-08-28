@@ -14,7 +14,7 @@ const ItemCard = ({ item, onSelectCard, onLike}) => {
     <div key={item?._id}>
       <div className="card__container">
         <div className="card__header">
-          <div className="card__name">{item?.name}</div>
+          <div className="card__name">{item.name}</div>
           <button
             className={itemLikeButtonClassName}
             onClick={() => onLike(item?._id, isLiked)}
