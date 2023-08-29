@@ -19,9 +19,11 @@ Connected Frontend project to the backend.
 
 ### Future Plans
 Inprove UI and clean up code.
+Will allow users to change location. 
+will add search function.
 
 ### Backend
 https://github.com/KelishaPitts/se_project_express
 
 ### Page
-Domainname: wwww.wtwr.k-zone.com
+Domainname: www.wtwr.k-zone.com
