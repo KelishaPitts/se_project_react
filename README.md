@@ -26,4 +26,4 @@ will add search function.
 https://github.com/KelishaPitts/se_project_express
 
 ### Page
-Domainname: www.wtwr.k-zone.com
+Domainname: www.raincheck.rainbowcup.com
