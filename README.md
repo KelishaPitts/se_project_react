@@ -26,4 +26,5 @@ will add search function.
 https://github.com/KelishaPitts/se_project_express
 
 ### Page
-Domainname: www.raincheck.rainbowcup.com
+Had to switch domainnames because my firewall keep blocking it. 
+Domainname: https://www.raincheck.wildsurf.net/
