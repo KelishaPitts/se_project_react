@@ -26,4 +26,5 @@ will add search function.
 https://github.com/KelishaPitts/se_project_express
 
 ### Page
-Domainname: www.wtwr.k-zone.com
+- I had to change the subdomain because it was triggering my firewall
+- www.raincheck.wildsurf.net
