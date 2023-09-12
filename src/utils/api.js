@@ -1,5 +1,5 @@
 export const baseUrl = process.env.NODE_ENV === 'production' 
-  ? 'https://api.wtwr.k-zone.com'
+  ? 'https://api.raincheck.wildsurf.net'
   : 'http://localhost:3001';
 
 //export const baseUrl = "http://localhost:3001";
